@@ -6,6 +6,10 @@ function startGame() {
 
   drawBackground();
 
+  spawnHero();
+}
+
+function spawnHero() {
   var hero = {
     position: {x: 400, y: 400},
     size: 60,
