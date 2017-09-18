@@ -13,12 +13,12 @@ function spawnHero() {
     position: {x: 400, y: 400},
     size: 60,
   };
-  drawHero(app.hero);
+  drawHero();
 }
 
-function drawHero(hero) {
+function drawHero() {
   app.context.fillStyle = "yellow";
-  app.context.fillRect(hero.position.x, hero.position.y, hero.size, hero.size);
+  app.context.fillRect(app.hero.position.x, app.hero.position.y, app.hero.size, app.hero.size);
 }
 
 function drawBackground() {
@@ -28,5 +28,5 @@ function drawBackground() {
 
 function drawFrame() {
   drawBackground();
-  drawHero(app.hero);
+  drawHero();
 }
