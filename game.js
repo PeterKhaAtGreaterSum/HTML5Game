@@ -5,6 +5,14 @@ function startGame() {
   app.context = app.canvas.getContext("2d");
 
   drawBackground();
+
+  var hero = {
+    position: {x: 400, y: 400},
+    size: 60,
+  };
+
+  app.context.fillStyle = "yellow";
+  app.context.fillRect(hero.position.x, hero.position.y, hero.size, hero.size);
 }
 
 function drawBackground() {
