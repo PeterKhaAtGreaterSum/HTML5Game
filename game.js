@@ -5,7 +5,6 @@ function startGame() {
   app.context = app.canvas.getContext("2d");
 
   drawBackground();
-
   spawnHero();
 }
 
@@ -14,7 +13,10 @@ function spawnHero() {
     position: {x: 400, y: 400},
     size: 60,
   };
+  drawHero(hero);
+}
 
+function drawHero(hero) {
   app.context.fillStyle = "yellow";
   app.context.fillRect(hero.position.x, hero.position.y, hero.size, hero.size);
 }
