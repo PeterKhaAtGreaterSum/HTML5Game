@@ -9,11 +9,11 @@ function startGame() {
 }
 
 function spawnHero() {
-  var hero = {
+  app.hero = {
     position: {x: 400, y: 400},
     size: 60,
   };
-  drawHero(hero);
+  drawHero(app.hero);
 }
 
 function drawHero(hero) {
@@ -28,5 +28,5 @@ function drawBackground() {
 
 function drawFrame() {
   drawBackground();
-  drawHero(hero);
+  drawHero(app.hero);
 }
