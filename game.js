@@ -48,7 +48,11 @@ function drawBackground() {
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
 
-  app.rock.position.y += app.rock.speed;
+  var rock = app.rock;
+  rock.position.y += rock.speed;
+  if (rock.position.y > app.canvas.height + rock.size) {
+    spawnRock();
+  }
 
   drawFrame();
 }
