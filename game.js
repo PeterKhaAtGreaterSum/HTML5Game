@@ -5,6 +5,7 @@ function startGame() {
   app.context = app.canvas.getContext("2d");
 
   spawnHero();
+  spawnRock();
   app.canvas.addEventListener("mousemove", onMouseMove, false);
   window.requestAnimationFrame(nextGameStep);
 }
@@ -16,6 +17,14 @@ function spawnHero() {
   };
 }
 
+function spawnRock() {
+  app.rock = {
+    position: {x: 100, y: 100},
+    size: 120,
+    speed: 150,
+  };
+}
+
 function onMouseMove(event) {
   app.hero.position.x = event.pageX;
   app.hero.position.y = event.pageY;
@@ -24,6 +33,11 @@ function onMouseMove(event) {
 function drawHero() {
   app.context.fillStyle = "yellow";
   app.context.fillRect(app.hero.position.x, app.hero.position.y, app.hero.size, app.hero.size);
+}
+
+function drawRock() {
+  app.context.fillStyle = "gray";
+  app.context.fillRect(app.rock.position.x, app.rock.position.y, app.rock.size, app.rock.size);
 }
 
 function drawBackground() {
@@ -39,4 +53,5 @@ function nextGameStep(timestamp) {
 function drawFrame() {
   drawBackground();
   drawHero();
+  drawRock();
 }
