@@ -38,7 +38,7 @@ function spawnRock() {
 }
 
 function onMouseMove(event) {
-  if (app.hero.image !== app.explodedImage) {
+  if (app.hero.state !== "exploded") {
     app.hero.position.x = event.pageX;
     app.hero.position.y = event.pageY;
   }
@@ -68,6 +68,7 @@ function nextGameStep(timestamp) {
 
   if (getDistance(app.hero, app.rock) < 50) {
     app.hero.image = app.explodedImage;
+    app.hero.state = "exploded";
   }
 
   drawFrame();
