@@ -21,7 +21,7 @@ function spawnRock() {
   app.rock = {
     position: {x: 100, y: 100},
     size: 120,
-    speed: 150,
+    speed: 3,
   };
 }
 
@@ -47,6 +47,9 @@ function drawBackground() {
 
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
+
+  app.rock.position.y += app.rock.speed;
+
   drawFrame();
 }
 
