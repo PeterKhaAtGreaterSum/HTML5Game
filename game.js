@@ -52,6 +52,12 @@ function spawnRock() {
           y: Math.random() * -app.canvas.height,
         }
       }
+    },
+    didRockHitHero: function(){
+      if (getDistance(app.hero, this) < 50) {
+        app.hero.image = app.explodedImage;
+        app.hero.state = "exploded";
+      }
     }
   };
 }
@@ -79,14 +85,9 @@ function drawBackground() {
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
 
-  var rock = app.rock;
   app.rock.move();
   app.rock.respawnRock();
-
-  if (getDistance(app.hero, app.rock) < 50) {
-    app.hero.image = app.explodedImage;
-    app.hero.state = "exploded";
-  }
+  app.rock.didRockHitHero();
 
   drawFrame();
 }
