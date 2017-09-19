@@ -4,6 +4,11 @@ function startGame() {
   app.canvas = document.getElementById("canvas");
   app.context = app.canvas.getContext("2d");
 
+  app.shipImage = new Image();
+  app.shipImage.src = "images/ship.png";
+  app.rockImage = new Image();
+  app.rockImage.src = "images/rock.png";
+
   spawnHero();
   spawnRock();
   app.canvas.addEventListener("mousemove", onMouseMove, false);
@@ -15,6 +20,7 @@ function spawnHero() {
     position: {x: 400, y: 400},
     size: 60,
     color: "yellow",
+    image: app.shipImage,
   };
 }
 
@@ -27,6 +33,7 @@ function spawnRock() {
     size: 120,
     speed: 3,
     color: "gray",
+    image: app.rockImage,
   };
 }
 
