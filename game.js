@@ -55,6 +55,7 @@ function spawnRock() {
           x: Math.random() * app.canvas.width,
           y: Math.random() * -app.canvas.height,
         }
+        this.speed += 1;
       }
     },
     didRockHitHero: function(){
