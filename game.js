@@ -14,6 +14,7 @@ function spawnHero() {
   app.hero = {
     position: {x: 400, y: 400},
     size: 60,
+    color: "yellow",
   };
 }
 
@@ -25,6 +26,7 @@ function spawnRock() {
     },
     size: 120,
     speed: 3,
+    color: "gray",
   };
 }
 
@@ -33,14 +35,9 @@ function onMouseMove(event) {
   app.hero.position.y = event.pageY;
 }
 
-function drawHero() {
-  app.context.fillStyle = "yellow";
-  app.context.fillRect(app.hero.position.x, app.hero.position.y, app.hero.size, app.hero.size);
-}
-
-function drawRock() {
-  app.context.fillStyle = "gray";
-  app.context.fillRect(app.rock.position.x, app.rock.position.y, app.rock.size, app.rock.size);
+function drawObject(object) {
+  app.context.fillStyle = object.color;
+  app.context.fillRect(object.position.x, object.position.y, object.size, object.size);
 }
 
 function drawBackground() {
@@ -62,6 +59,6 @@ function nextGameStep(timestamp) {
 
 function drawFrame() {
   drawBackground();
-  drawHero();
-  drawRock();
+  drawObject(app.hero);
+  drawObject(app.rock);
 }
