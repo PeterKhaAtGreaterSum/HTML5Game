@@ -12,6 +12,7 @@ function startGame() {
   app.explodedImage.src = "images/exploded.png";
 
   spawnHero();
+  spawnRocks();
   spawnRock();
   app.canvas.addEventListener("mousemove", onMouseMove, false);
   window.requestAnimationFrame(nextGameStep);
@@ -23,6 +24,13 @@ function spawnHero() {
     size: 60,
     image: app.shipImage,
   };
+}
+
+function spawnRocks() {
+  app.rocks = [];
+  for (var i = 0; i < 10; i++) {
+    
+  }
 }
 
 function spawnRock() {
