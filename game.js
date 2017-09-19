@@ -4,7 +4,6 @@ function startGame() {
   app.canvas = document.getElementById("canvas");
   app.context = app.canvas.getContext("2d");
 
-  drawBackground();
   spawnHero();
   window.requestAnimationFrame(nextGameStep);
 }
@@ -14,7 +13,6 @@ function spawnHero() {
     position: {x: 400, y: 400},
     size: 60,
   };
-  drawHero();
 }
 
 function drawHero() {
