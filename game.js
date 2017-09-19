@@ -42,6 +42,9 @@ function spawnRock() {
     size: 120,
     speed: 3,
     image: app.rockImage,
+    move: function() {
+      this.position.y += this.speed;
+    }
   };
 }
 
@@ -69,7 +72,7 @@ function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
 
   var rock = app.rock;
-  rock.position.y += rock.speed;
+  app.rock.move();
   if (rock.position.y > app.canvas.height + rock.size) {
     spawnRock();
   }
