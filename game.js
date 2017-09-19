@@ -13,7 +13,6 @@ function startGame() {
 
   spawnHero();
   spawnRocks();
-  spawnRock();
   app.canvas.addEventListener("mousemove", onMouseMove, false);
   window.requestAnimationFrame(nextGameStep);
 }
