@@ -8,6 +8,8 @@ function startGame() {
   app.shipImage.src = "images/ship.png";
   app.rockImage = new Image();
   app.rockImage.src = "images/rock.png";
+  app.explodedImage = new Image();
+  app.explodedImage.src = "images/exploded.png";
 
   spawnHero();
   spawnRock();
@@ -60,6 +62,10 @@ function nextGameStep(timestamp) {
   rock.position.y += rock.speed;
   if (rock.position.y > app.canvas.height + rock.size) {
     spawnRock();
+  }
+
+  if (getDistance(app.hero, app.rock) < 50) {
+    app.hero.image = app.explodedImage;
   }
 
   drawFrame();
