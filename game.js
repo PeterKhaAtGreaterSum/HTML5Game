@@ -5,6 +5,7 @@ function startGame() {
   app.context = app.canvas.getContext("2d");
 
   spawnHero();
+  app.canvas.addEventListener("mousemove", onMouseMove, false);
   window.requestAnimationFrame(nextGameStep);
 }
 
@@ -13,6 +14,11 @@ function spawnHero() {
     position: {x: 400, y: 400},
     size: 60,
   };
+}
+
+function onMouseMove(event) {
+  app.hero.position.x = event.pageX;
+  app.hero.position.y = event.pageY;
 }
 
 function drawHero() {
