@@ -44,6 +44,14 @@ function spawnRock() {
     image: app.rockImage,
     move: function() {
       this.position.y += this.speed;
+    },
+    respawnRock: function() {
+      if (this.position.y > app.canvas.height + this.size) {
+        this.position = {
+          x: Math.random() * app.canvas.width,
+          y: Math.random() * -app.canvas.height,
+        }
+      }
     }
   };
 }
@@ -73,12 +81,7 @@ function nextGameStep(timestamp) {
 
   var rock = app.rock;
   app.rock.move();
-  if (rock.position.y > app.canvas.height + rock.size) {
-    app.rock.position = {
-      x: Math.random() * app.canvas.width,
-      y: Math.random() * -app.canvas.height,
-    }
-  }
+  app.rock.respawnRock();
 
   if (getDistance(app.hero, app.rock) < 50) {
     app.hero.image = app.explodedImage;
