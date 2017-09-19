@@ -65,6 +65,12 @@ function nextGameStep(timestamp) {
   drawFrame();
 }
 
+function getDistance(object1, object2) {
+  var dx = object1.position.x - object2.position.x;
+  var dy = object1.position.y - object2.position.y;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
 function drawFrame() {
   drawBackground();
   drawObject(app.hero);
