@@ -43,8 +43,11 @@ function onMouseMove(event) {
 }
 
 function drawObject(object) {
-  app.context.fillStyle = object.color;
-  app.context.fillRect(object.position.x, object.position.y, object.size, object.size);
+  var context = app.context;
+  context.save();
+  context.translate(object.position.x, object.position.y);
+  context.drawImage(object.image, -object.size/2, -object.size/2, object.size, object.size);
+  context.restore();
 }
 
 function drawBackground() {
