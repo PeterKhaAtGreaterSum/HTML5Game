@@ -38,8 +38,10 @@ function spawnRock() {
 }
 
 function onMouseMove(event) {
-  app.hero.position.x = event.pageX;
-  app.hero.position.y = event.pageY;
+  if (app.hero.image !== app.explodedImage) {
+    app.hero.position.x = event.pageX;
+    app.hero.position.y = event.pageY;
+  }
 }
 
 function drawObject(object) {
