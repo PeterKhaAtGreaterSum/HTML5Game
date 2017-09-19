@@ -19,7 +19,6 @@ function spawnHero() {
   app.hero = {
     position: {x: 400, y: 400},
     size: 60,
-    color: "yellow",
     image: app.shipImage,
   };
 }
@@ -32,7 +31,6 @@ function spawnRock() {
     },
     size: 120,
     speed: 3,
-    color: "gray",
     image: app.rockImage,
   };
 }
