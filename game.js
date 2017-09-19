@@ -74,7 +74,10 @@ function nextGameStep(timestamp) {
   var rock = app.rock;
   app.rock.move();
   if (rock.position.y > app.canvas.height + rock.size) {
-    spawnRock();
+    app.rock.position = {
+      x: Math.random() * app.canvas.width,
+      y: Math.random() * -app.canvas.height,
+    }
   }
 
   if (getDistance(app.hero, app.rock) < 50) {
