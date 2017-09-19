@@ -6,6 +6,7 @@ function startGame() {
 
   drawBackground();
   spawnHero();
+  window.requestAnimationFrame(nextGameStep);
 }
 
 function spawnHero() {
@@ -24,6 +25,11 @@ function drawHero() {
 function drawBackground() {
   app.context.fillStyle = "black";
   app.context.fillRect(0, 0, app.canvas.width, app.canvas.height);
+}
+
+function nextGameStep(timestamp) {
+  window.requestAnimationFrame(nextGameStep);
+  drawFrame();
 }
 
 function drawFrame() {
