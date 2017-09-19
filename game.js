@@ -42,6 +42,11 @@ function spawnRock() {
     size: 120,
     speed: 3,
     image: app.rockImage,
+    nextRockStep: function() {
+      this.move();
+      this.respawnRock();
+      this.didRockHitHero();
+    },
     move: function() {
       this.position.y += this.speed;
     },
@@ -85,9 +90,7 @@ function drawBackground() {
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
 
-  app.rock.move();
-  app.rock.respawnRock();
-  app.rock.didRockHitHero();
+  app.rock.nextRockStep();
 
   drawFrame();
 }
