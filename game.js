@@ -29,12 +29,12 @@ function spawnHero() {
 function spawnRocks() {
   app.rocks = [];
   for (var i = 0; i < 10; i++) {
-    
+    spawnRock();
   }
 }
 
 function spawnRock() {
-  app.rock = {
+  var rock = {
     position: {
       x: Math.random() * app.canvas.width,
       y: Math.random() * -app.canvas.height,
@@ -65,6 +65,7 @@ function spawnRock() {
       }
     }
   };
+  app.rocks.push(rock);
 }
 
 function onMouseMove(event) {
@@ -89,9 +90,9 @@ function drawBackground() {
 
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
-
-  app.rock.nextRockStep();
-
+  app.rocks.forEach(function(rock) {
+    rock.nextRockStep();
+  });
   drawFrame();
 }
 
@@ -104,5 +105,7 @@ function getDistance(object1, object2) {
 function drawFrame() {
   drawBackground();
   drawObject(app.hero);
-  drawObject(app.rock);
+  app.rocks.forEach(function(rock) {
+    drawObject(rock);
+  });
 }
