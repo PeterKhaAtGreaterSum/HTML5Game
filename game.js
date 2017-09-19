@@ -19,7 +19,10 @@ function spawnHero() {
 
 function spawnRock() {
   app.rock = {
-    position: {x: 100, y: 100},
+    position: {
+      x: Math.random() * app.canvas.width,
+      y: Math.random() * -app.canvas.height,
+    },
     size: 120,
     speed: 3,
   };
