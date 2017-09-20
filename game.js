@@ -42,8 +42,11 @@ function spawnRock() {
     size: 120,
     speed: 3,
     image: app.rockImage,
+    angle: Math.random() * 2 * Math.PI,
+    rotateSpeed: Math.random() * 2 * Math.PI / 150,
     nextRockStep: function() {
       this.move();
+      this.angle += this.rotateSpeed;
       this.respawnRock();
       this.didRockHitHero();
     },
@@ -82,6 +85,7 @@ function drawObject(object) {
   var context = app.context;
   context.save();
   context.translate(object.position.x, object.position.y);
+  context.rotate(object.angle);
   context.drawImage(object.image, -object.size/2, -object.size/2, object.size, object.size);
   context.restore();
 }
