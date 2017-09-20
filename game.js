@@ -14,6 +14,7 @@ function startGame() {
   spawnHero();
   spawnRocks();
   app.canvas.addEventListener("mousemove", onMouseMove, false);
+  app.startTime = performance.now();
   window.requestAnimationFrame(nextGameStep);
 }
 
@@ -90,6 +91,7 @@ function drawBackground() {
 
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
+  app.score = Math.floor((timestamp - app.startTime) / 1000);
   app.rocks.forEach(function(rock) {
     rock.nextRockStep();
   });
@@ -108,4 +110,13 @@ function drawFrame() {
   app.rocks.forEach(function(rock) {
     drawObject(rock);
   });
+  drawScore();
+}
+
+function drawScore() {
+  var context = app.context;
+  context.font = "italic 30px Calibri";
+  context.textAlign = "center";
+  context.fillStyle = "yellow";
+  context.fillText("Score " + app.score, app.canvas.width/2, 40);
 }
