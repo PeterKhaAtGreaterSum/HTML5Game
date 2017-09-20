@@ -56,7 +56,9 @@ function spawnRock() {
           x: Math.random() * app.canvas.width,
           y: Math.random() * -app.canvas.height,
         }
-        this.speed += 1;
+        if (app.hero.state !== "exploded") {
+          this.speed += 1;
+        }
       }
     },
     didRockHitHero: function(){
@@ -91,7 +93,9 @@ function drawBackground() {
 
 function nextGameStep(timestamp) {
   window.requestAnimationFrame(nextGameStep);
-  app.score = Math.floor((timestamp - app.startTime) / 1000);
+  if (app.hero.state !== "exploded") {
+    app.score = Math.floor((timestamp - app.startTime) / 1000);
+  }
   app.rocks.forEach(function(rock) {
     rock.nextRockStep();
   });
