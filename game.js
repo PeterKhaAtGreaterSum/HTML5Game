@@ -115,8 +115,13 @@ function drawFrame() {
 
 function drawScore() {
   var context = app.context;
-  context.font = "italic 30px Calibri";
   context.textAlign = "center";
   context.fillStyle = "yellow";
-  context.fillText("Score " + app.score, app.canvas.width/2, 40);
+  if (app.hero.state === "exploded") {
+    context.font = "italic 125px Calibri";
+    context.fillText("Score " + app.score, app.canvas.width/2, app.canvas.height/2);
+  } else {
+    context.font = "italic 30px Calibri";
+    context.fillText("Score " + app.score, app.canvas.width/2, 40);
+  }
 }
